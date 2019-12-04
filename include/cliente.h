@@ -1,12 +1,13 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
-#include <pedido.h>
-
+typedef struct Detalhes{
+     char Sabor[1000];
+     float ValorTotal;
+};
 struct cliente{
      char Nome[1000];
      char Endereco[1000];
-     pedido pedidos;
-//     Pedido pedido;
+     struct Detalhes detalhe;
 };
 
 #endif // CLIENTE_H

@@ -36,13 +36,13 @@ int main(void)
      scanf("%s",fulano.Endereco);
      Clientes[i]=fulano;
 
-//     pedido();
+     pedido(fulano);
 
       break;
 
     case 3:
 
-pedido();
+
 
       break;
 
@@ -88,7 +88,10 @@ pedido();
        }
      }
     case 6:
-     default:
+
+         while(1){
+            printf("%s",fulano.detalhe.Sabor);
+         }
       printf("O sistema será fechado!");
      break;
      }

@@ -1,18 +1,19 @@
 # depslib dependency file v1.0
-1575420516 source:c:\users\thomas\desktop\arquivos\code\pim\main.c
+1575422604 source:c:\users\thomas\desktop\arquivos\code\pim\main.c
 	<stdio.h>
 	<stdlib.h>
 	<cliente.h>
 	<pedido.h>
 
-1575421090 c:\users\thomas\desktop\arquivos\code\pim\include\cliente.h
-	<pedido.h>
+1575422236 c:\users\thomas\desktop\arquivos\code\pim\include\cliente.h
 
 1575417845 source:c:\users\thomas\desktop\arquivos\code\pim\src\cliente.cpp
 
-1575421059 c:\users\thomas\desktop\arquivos\code\pim\include\pedido.h
+1575423686 c:\users\thomas\desktop\arquivos\code\pim\include\pedido.h
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<cliente.h>
 
 1575420497 source:c:\users\thomas\desktop\arquivos\code\pim\src\pedido.cpp
 
