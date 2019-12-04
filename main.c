@@ -1,124 +1,96 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct Pizza
+#include <cliente.h>
+#include <pedido.h>
+
+int main(void)
 {
-    int tamanho;
-    int sabor;
-    float valor;
-};
+  int op,uni,i;
+  i=0;
+  op=1;
+  uni=1;
 
-typedef struct Pedido
-{
-    struct Pizza pizzas[10];
-    float valor;
-    char cliente [50];
-    char endereco [50];
-};
+  struct cliente Clientes[50], fulano;
+  while(op!=6)
+  {
+   system("cls");
+   printf("Menu Inicial\n");
+   printf("=========================\n\n");
+    printf("1 - Pedido\n");
+    printf("3 - Estoque\n");
+    printf("4 - Funcionarios\n");
+    printf("5 - Filiais\n");
+    printf("6 - Sair\n\n");
+    printf("=========================\n\n");
+    printf("Escolha a Opcao: ");
+     scanf("%d", &op);
+  printf("=========================\n\n");
 
-int main()
-{
-    int menuEscolha,escolhaSabor,escolhaQuantidade,fimPedido, saborPizza,qntdPizzas,tamanhoPizza,pizzatemp;
-    struct Pedido pedido;
-
-
-    while(menuEscolha != 3)
+  switch(op)
     {
-        printf("Bem - Vindo ao Sistema de Administração de Pizzaria \n");
-        printf("Escolha o procedimento: \n");
-        printf("1- Pedido 2-Relatório de Pedidos 3- Sair \n");
+    case 1:
+     i++;
+     printf("NOME: ");
+     scanf("%s",fulano.Nome);
+     printf("ENDERECO: ");
+     scanf("%s",fulano.Endereco);
+     Clientes[i]=fulano;
 
-        scanf("%d",&menuEscolha);
-        switch(menuEscolha)
-        {
-        case 1:
+//     pedido();
 
-            while(fimPedido != 1)
-            {
-                struct Pizza pizza;
-                printf("Escolha o tamanho da pizza:\n");
-                printf("1- Grande R$ 40\n");
-                printf("2- Media  R$ 30\n");
-                printf("3- Pequena R$ 20\n");
-                scanf("%d",&pizzatemp);
-                tamanhoPizza = pizzatemp;
-                switch(tamanhoPizza)
-                {
-                case 1:
-                    pizza.tamanho =1;
-                    pedido.valor+=40;
-                    break;
-                case 2:
-                    pizza.tamanho =2;
-                    pedido.valor+=30;
-                    break;
-                case 3:
-                    pizza.tamanho =3;
-                    pedido.valor+=20;
-                    break;
-                case 4:
-                    fimPedido = 1;
-                    break;
-                default:
-                    printf("Tamanho inválido.");
-                    break;
-                }
-                printf("Escolha o sabor da pizza:\n");
-                printf("1- Calabresa\n");
-                printf("2- Mussarela\n");
-                printf("3- Pepperoni\n");
-                printf("4- Frango com Catupiry\n");
-                scanf("%d",&saborPizza);
-                switch(saborPizza)
-                {
-                case 1:
-                    pizza.sabor =1;
-                    break;
-                case 2:
-                    pizza.sabor =2;
-                    break;
-                case 3:
-                    pizza.sabor =3;
-                    break;
-                case 4:
-                    pizza.sabor =4;
-                    break;
-                default:
-                    printf("Sabor inválido.");
-                    break;
-                }
-                pedido.pizzas[sizeof-1] = pizza;
+      break;
 
-                printf("Insira nome do Cliente:");
-                scanf("%s",pedido.cliente);
-                printf("Endereço do Cliente:");
-                scanf("%s",pedido.endereco);
-                printf("Fim do pedido ? 1 - sim 2 não");
-                scanf("%d",&fimPedido);
-                break;
-            case 2:
+    case 3:
 
-                break;
-            case 3:
+pedido();
 
-                break;
-            case 4:
-                printf("Finalizando sessão.");
-                break;
-            default:
-                printf("Valor inserido inválido.");
-                break;
-            }
-            break;
+      break;
 
-        case 2:
-            /*IMPLEMENTAÇÂO RELATORIO*/
-            break;
-        case 3:
-            menuEscolha = 3;
-            break;
-        }
 
-    }
+    case 4:
 
-    return 0;
+
+      break;
+
+    case 5:
+
+     while(uni!=3)
+     {
+      printf("Outras Unidades\n");
+      printf("=========================\n\n");
+      printf("1 - Paulista\n");
+      printf("2 - Faria Lima\n");
+      printf("3 - Jardins\n");
+      printf("Informe a unidade: ");
+       scanf("%d", &uni);
+       printf("=========================\n\n");
+
+      if(uni==1)
+      {
+        printf("Av. Paulista, 900\n");
+        printf("Tel: 11 2859-4321\n");
+        printf("=========================\n\n");
+         break;
+      }
+      if(uni==2)
+      {
+        printf("Av. Brg. Faria Lima, 1099\n");
+        printf("Tel: 11 4506-5462\n");
+        printf("=========================\n\n");
+         break;
+      }
+       else
+       {
+         printf("R. Colômbia, 785\n");
+         printf("Tel: 11 3580-9790\n");
+         printf("=========================\n\n");
+         break;
+       }
+     }
+    case 6:
+     default:
+      printf("O sistema será fechado!");
+     break;
+     }
+  }
 }
