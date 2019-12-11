@@ -338,8 +338,8 @@ int verifica_codf( int cod ) // VERIFICADOR DE CÓDIGO
 int cadastroPedido(int Cad){
     int Option;
     int OpcaoPedido;
-    int valor;
-    if(1==Cad)
+    int valor =0;
+    if(Cad>0)
     {
       do
       {
