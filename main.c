@@ -40,22 +40,21 @@ void cadastroP(int cod,int pos);
 void cadastroF(int cod,int pos);
 void list();
 void listf();
-void cadastroPedido();
+ int cadastroPedido(int Cad);
 void consultaCod (void);
 void consultaCodf (void);
 void excluirCliente (void);
 void excluirFuncionario (void);
-int valorTotal;
-int somar(int *valor){
-    valorTotal+=*valor;
-}
+
+
+
 int main(void){ //INICIO DO MAIN
 
     int i,Opcao,OpcaoCliente,posicao,retorno;
     int codaux;
-
+    int valorTotal = 0;
     do
-    {printf("=======SISTEMA DE PIZZARIA======= ");
+    {printf("=======SISTEMA DE PIZZARIA======= \n");
         printf("1 - Cadastrar Novo Cliente\n");
         printf("2 - Cliente\n");
         printf("3 - Excluir Cliente\n");
@@ -132,7 +131,14 @@ int main(void){ //INICIO DO MAIN
         else if (Opcao == 4)
         {
             printf("Voce selecionou a opcao 4 - Cadastrar Pedido\n");
-            cadastroPedido();
+            int Cad;
+            printf("\nDigite numero do cadastro: ");
+            scanf("%d",&Cad);
+
+            valorTotal = cadastroPedido(Cad);
+            log[Cad].clientePed.valorped = valorTotal;
+            printf("\n Valor total : %d",&valorTotal);
+            system("pause");
         }
 
         else if (Opcao == 5)
@@ -329,78 +335,60 @@ int verifica_codf( int cod ) // VERIFICADOR DE CÓDIGO
     return(1);
 
 } // FIM DO VERIFICADOR
-void cadastroPedido(){ //Cadastro dos pedidos
-    system("cls");
-    int i;
+int cadastroPedido(int Cad){
     int Option;
     int OpcaoPedido;
-    int nomeCad;
-
-    printf("\nDigite numero do cadastro: ");
-    scanf("%d",&nomeCad);
-    for(i=0;i<200;i++){
-            if(log[i].cod==nomeCad){
-                do{
-                printf("\nEscolha o seu pedido: "); //PEDIDOS MERAMENTE ILUSTRATIVOS, COLOQUEI SÓ PARA VER SE CONSEGUIA ANEXAR A 1 CADATRO MAS NÃO CONSEGUI.
-                printf("\n1- Pizza de Calabresa -50 reais");
-                printf("\n2- Pizza de Frango - 40 reais");
-                printf("\n3- Pizza de Mussarela -30 reais");
-                printf("\n4- Coca Cola- 10 reais");
-                printf("\n5- Guarana - 10 reais \n");
-                scanf("%d", &OpcaoPedido);
-                if(OpcaoPedido == 1){
-                    strcpy(log[i].clientePed.namePed, "Pizza de Calabresa");
-                    printf("\nVoce escolheu %s, seu pedido foi adicionado ao seu cadastro.",log[i].clientePed.namePed);
-
-                    printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
-                    scanf("%d", &Option);
-                    somar(50);
-                }
-                else if(OpcaoPedido == 2){
-                    strcpy(log[i].clientePed.namePed, "Pizza Frango");
-                    printf("\nVoce escolheu %s, seu pedido foi adicionado ao seu cadastro.", log[i].clientePed.namePed);
-                    printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
-                    scanf("%d", &Option);
-                    somar(40);
-
-                   }
-                   else if(OpcaoPedido == 3){
-                    strcpy(log[i].clientePed.namePed, "Pizza Mussarela");
-                    printf("\nVoce escolheu %s, seu pedido foi adicionado ao seu cadastro.", log[i].clientePed.namePed);
-                    printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
-                    scanf("%d", &Option);
-                    somar(30);
-
-                }else if(OpcaoPedido == 4){
-                    strcpy(log[i].clientePed.namePed, "Coca cola");
-                    printf("\nVoce escolheu %s, seu pedido foi adicionado ao seu cadastro.", log[i].clientePed.namePed);
-
-                    printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
-                    scanf("%d", &Option);
-somar(10);
-                }else if(OpcaoPedido == 5){
-                    strcpy(log[i].clientePed.namePed, "Guaraná");
-                    printf("\nVoce escolheu %s, seu pedido foi adicionado ao seu cadastro.", log[i].clientePed.namePed);
-
-                    printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
-
-                    scanf("%d", &Option);
-somar(10);
-                }
-
-    }while(Option == 1);
-    if(Option ==2){
-        printf("\nCodigo: %d \nNome: %s\nCPF: %s\nEndereco: %s\nTelefone: %s\n\n", log[i].cod,log[i].nome,log[i].CPF,log[i].endereco,log[i].telefone);
-        printf("Valor total:%d",&valorTotal);
-            system("pause");
+    int valor;
+    if(1==Cad)
+    {
+      do
+      {
+        printf("\nEscolha o seu pedido: ");
+        printf("\n1- Pizza de Calabresa -50 reais");
+        printf("\n2- Pizza de Frango - 40 reais");
+        printf("\n2- Pizza de Mussarela - 30 reais");
+        printf("\n2- Coca Cola- 10 reais");
+        printf("\n2- Guarana- 10 reais");
+        scanf("%d", &OpcaoPedido);
+        if(OpcaoPedido == 1)
+        {
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            valor +=50;
+            scanf("%d", &Option);
+        }
+        else
+          if(OpcaoPedido == 2)
+          {
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            scanf("%d", &Option);
+            valor +=40;
+          }
+        else
+          if(OpcaoPedido == 3)
+          {
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            scanf("%d", &Option);
+            valor +=30;
+          }
+        else
+          if(OpcaoPedido == 4)
+          {
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            scanf("%d", &Option);
+            valor +=10;
+          }
+          else
+          if(OpcaoPedido == 5)
+          {
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            scanf("%d", &Option);
+            valor +=10;
+          }
+      }while(Option == 1);
     }
-    system("cls");
+    return valor;
+}
 
-}
-i++;
-
-}
-}
 
 void consultaCodf(void) // CONSULTAR 1 CADASTRADO QUALQUER VIA CÓDIGO DADO POR USUÁRIO.
 {
