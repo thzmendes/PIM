@@ -26,6 +26,7 @@ struct funcionario
     char telefone[200];
     char nome[200];
     char endereco[200];
+    char cargo[200];
     char data[200];
     int vazio,cod;
     char salario[100];
@@ -56,13 +57,13 @@ int main(void){ //INICIO DO MAIN
     do
     {printf("=======SISTEMA DE PIZZARIA======= \n");
         printf("1 - Cadastrar Novo Cliente\n");
-        printf("2 - Cliente\n");
+        printf("2 - Relatorio Cliente\n");
         printf("3 - Excluir Cliente\n");
         printf("4 - Cadastrar Pedido\n");
-        printf("5 - Excluir Pedido\n");
+        printf("5 - Excluir Registro Pedido\n");
         printf("6 - Cadastrar Novo Funcionario\n");
-        printf("7 - Funcionario\n");
-        printf("8 - Excluir Funcioario\n");
+        printf("7 - Relatorio Funcionario\n");
+        printf("8 - Excluir Funcionario\n");
         printf("9 - Sair\n");
         printf(" Selecione uma opcao por favor: ");
         scanf("%d", &Opcao);
@@ -100,7 +101,7 @@ int main(void){ //INICIO DO MAIN
         {
             system("cls");
             do{
-            printf("Voce selecionou a opcao 2 - Clientes\n\n");
+            printf("Voce selecionou a opcao 2 - Relatorio Clientes\n\n");
             printf("1 - Pesquisar cliente por codigo\n");
             printf("2 - Listar todos os clientes\n");
             printf("3 - Voltar ao menu principal\n");
@@ -132,18 +133,27 @@ int main(void){ //INICIO DO MAIN
         {
             printf("Voce selecionou a opcao 4 - Cadastrar Pedido\n");
             int Cad;
+            int vlr_T=0;
             printf("\nDigite numero do cadastro: ");
             scanf("%d",&Cad);
 
-            valorTotal = cadastroPedido(Cad);
-            log[Cad].clientePed.valorped = valorTotal;
-            printf("\n Valor total : %d",&valorTotal);
+            vlr_T = cadastroPedido(Cad);
+            log[Cad].clientePed.valorped = vlr_T;
+            printf("\n Valor total : R$ %d\n",vlr_T);
             system("pause");
         }
 
         else if (Opcao == 5)
         {
             printf("Voce selecionou a opcao 5 - Excluir Pedido\n");
+            int Cad;
+            int vlr_T=0;
+            printf("\nDigite numero do cadastro: ");
+            scanf("%d",&Cad);
+            log[Cad].clientePed.valorped =0;
+            printf("\n Pedido Cancelado - Enter para continuar");
+            system("pause");
+
         }else if (Opcao == 6)
         {
             printf("Voce selecionou a opcao 6 - Cadastrar Funcionarios\n");
@@ -173,7 +183,7 @@ int main(void){ //INICIO DO MAIN
                 break;
         }else if (Opcao == 7)
         {
-            printf("Voce selecionou a opcao 7 - Funcionarios\n");
+            printf("Voce selecionou a opcao 7 - Relatorio Funcionarios\n");
             do{
             printf("1 - Pesquisar funcionario por codigo\n");
             printf("2 - Listar todos os funcionarios\n");
@@ -274,6 +284,8 @@ void cadastroF(int cod, int pos){ //Cadastro das pessoas
         gets(fun[pos].CPF);
         printf("\nDigite seu Endereco: ");
         gets(fun[pos].endereco);
+        printf("\nDigite seu Cargo: ");
+        gets(fun[pos].cargo);
         printf("\nDigite seu Telefone: ");
         gets(fun[pos].telefone);
         printf("\nDigite o Salario: ");
@@ -338,7 +350,7 @@ int verifica_codf( int cod ) // VERIFICADOR DE CÓDIGO
 int cadastroPedido(int Cad){
     int Option;
     int OpcaoPedido;
-    int valor =0;
+    int valor=0;
     if(Cad>0)
     {
       do
@@ -346,41 +358,41 @@ int cadastroPedido(int Cad){
         printf("\nEscolha o seu pedido: ");
         printf("\n1- Pizza de Calabresa -50 reais");
         printf("\n2- Pizza de Frango - 40 reais");
-        printf("\n2- Pizza de Mussarela - 30 reais");
-        printf("\n2- Coca Cola- 10 reais");
-        printf("\n2- Guarana- 10 reais");
+        printf("\n3- Pizza de Mussarela - 30 reais");
+        printf("\n4- Coca Cola- 10 reais");
+        printf("\n5- Guarana- 10 reais");
         scanf("%d", &OpcaoPedido);
         if(OpcaoPedido == 1)
         {
-            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: \n");
             valor +=50;
             scanf("%d", &Option);
         }
         else
           if(OpcaoPedido == 2)
           {
-            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal:\n ");
             scanf("%d", &Option);
             valor +=40;
           }
         else
           if(OpcaoPedido == 3)
           {
-            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: \n");
             scanf("%d", &Option);
             valor +=30;
           }
         else
           if(OpcaoPedido == 4)
           {
-            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: \n");
             scanf("%d", &Option);
             valor +=10;
           }
           else
           if(OpcaoPedido == 5)
           {
-            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: ");
+            printf("\nPressione 1 para continuar pedindo ou 2 para volar ao menu principal: \n");
             scanf("%d", &Option);
             valor +=10;
           }
