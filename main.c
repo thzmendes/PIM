@@ -55,7 +55,7 @@ int main(void){ //INICIO DO MAIN
     int codaux;
 
     do
-    {
+    {printf("=======SISTEMA DE PIZZARIA======= ");
         printf("1 - Cadastrar Novo Cliente\n");
         printf("2 - Cliente\n");
         printf("3 - Excluir Cliente\n");
