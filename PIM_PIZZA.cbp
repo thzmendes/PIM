@@ -33,6 +33,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Detalhes.h" />
 		<Unit filename="include/Pedido.h" />
 		<Unit filename="include/cliente.h" />
 		<Unit filename="main.c">
